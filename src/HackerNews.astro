@@ -3,10 +3,9 @@ import type ButtonProps  from './types';
 
 type Props = ButtonProps;
 
-const { url=Astro.request.url, title } = Astro.props;
+const { url=Astro.request.url, title, useShareUrl = true } = Astro.props;
 
-let URL = `http://news.ycombinator.com/submitlink?u=${url}&t=${title}`
-
+let URL = (useShareUrl) ? `http://news.ycombinator.com/submitlink?u=${url}&t=${title}` : url
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
   <slot>

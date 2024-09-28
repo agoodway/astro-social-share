@@ -2,18 +2,21 @@
 import type ButtonProps from "./types";
 
 type Props = ButtonProps;
-const { url=Astro.request.url, description, style} = Astro.props;
+const { url=Astro.request.url, description, style, useShareUrl = true} = Astro.props;
 
 let URL = `whatsapp://send?text=`;
 
 if (description) URL += `${description} `;
 URL += `${url}`;
+
+let URL = (useShareUrl) ? encodeURI(URL) : url
+
 ---
 
 <a
   class="social-share-btn"
   target="_blank"
-  href={encodeURI(URL)}
+  href={URL}
   rel="noopener noreferrer"
   data-action="share/whatsapp/share"
 >

@@ -3,10 +3,9 @@ import type ButtonProps  from './types';
 
 type Props = ButtonProps;
 
-const { url=Astro.request.url} = Astro.props;
+const { url=Astro.request.url, useShareUrl = true} = Astro.props;
 
-let URL = `https://www.facebook.com/sharer/sharer.php?u=${url}`
-
+let URL = (useShareUrl) ? `https://www.facebook.com/sharer/sharer.php?u=${url}` : url
 ---
 <a class="social-share-btn" target="_blank" href={URL} rel="noopener noreferrer">
   <slot>
