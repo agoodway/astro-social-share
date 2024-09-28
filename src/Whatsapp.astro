@@ -8,9 +8,7 @@ let URL = `whatsapp://send?text=`;
 
 if (description) URL += `${description} `;
 URL += `${url}`;
-
-let URL = (useShareUrl) ? encodeURI(URL) : url
-
+URL = (useShareUrl) ? encodeURI(URL) : url
 ---
 
 <a
